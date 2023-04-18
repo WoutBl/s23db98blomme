@@ -3,8 +3,19 @@ extends layout.pug
 block content
   head
     title My Pug Page
-    
+    script.
+      window.onload = function() {
+        var results = [10, "Copper", "Kansas City"];
+        results.forEach(myfunction)
+        function myfunction(x){
+          console.log(x);
+          document.getElementById("row").innerHTML += `<div class='col-sm-2'>` + x + `</div>`;
+        }
+      }
   body
     h1 Sewer
+    div.container-fluid
+      div#row.row
+        
     
       
