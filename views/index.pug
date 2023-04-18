@@ -1,6 +1,19 @@
-extends layout
+extends layout.pug
 
 block content
-  h1= title
-  p Welcome to Wout's Server
-  button(type="button", class="btn btn-secondary") Press Me
+  head
+    title My Pug Page
+    script.
+      var count = 20
+      var change = -1
+      function doReduce() {
+        const div = document.getElementById("reduce");
+        count = count + change 
+        change -= 1
+        div.innerHTML = "Count " + count + " change " + change;
+      }
+  body
+    h1 Welcome to my Pug Page!
+    button(onclick="doReduce()") Click me!
+    div#reduce
+      
