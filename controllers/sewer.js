@@ -1,8 +1,16 @@
 var Sewer = require('../models/Sewer');
 // List of all Costumes
-exports.Sewer_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Sewer list');
-};
+exports.Sewer_list = async function(req, res) {
+    try{
+        theSewers = await Sewer.find();
+        res.send(theSewers);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    
 // for a specific Costume.
 exports.Sewer_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Sewer detail: ' + req.params.id);
