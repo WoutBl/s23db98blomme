@@ -4,8 +4,79 @@ block content
   head
     title My Pug Page
     script.
-      
+      window.onload = function() {
+        var table = document.getElementById("table")
+        const urlParams = new URLSearchParams(window.location.search);
+        const rows = urlParams.get('rows');
+        const cols = urlParams.get('cols');
+        console.log(rows, cols);
+        document.getElementById("rowscols").innerHTML = "Rows: " + rows + "<br> Cols: " + cols
+        var row = Number(rows)
+        var col = Number(cols)
+        if (Number.isInteger(row) == false || Number.isInteger(col) == false){
+          document.getElementById("error").innerHTML = "numbers are not integers"
+          
+        }
+        else{
+          if (row > 10 || row < 1 || col > 10 || col < 1){
+              document.getElementById("error").innerHTML = "numbers have to be between 10 and 1"
+          } else {
+            
+            table.innerHTML += "<tbody id='outer'>"
+            var outer = document.getElementById("outer")
+            for(let i = 0; i <rows; i++){
+              outer.innerHTML += `<tr id='middle${i}'>`
+              var middle = document.getElementById(`middle${i}`)
+              for(let j = 0; j < cols; j++){
+                if (middle == document.getElementById(`middle0`)){
+                  let num = j + 1
+                  if (num >= 0) {
+                    middle.innerHTML += `<td> ${num}</td>`
+                  }else{
+                    middle.innerHTML += `<td> 0</td>`
+                  }
+                  
+                }if (middle == document.getElementById(`middle1`)){
+                  let num = j
+                  if (num >= 0) {
+                    middle.innerHTML += `<td> ${num}</td>`
+                  }else{
+                    middle.innerHTML += `<td> 0</td>`
+                  }
+                }if (middle == document.getElementById(`middle2`)){
+                  let num = j - 1
+                  if (num >= 0) {
+                    middle.innerHTML += `<td> ${num}</td>`
+                  }else{
+                    middle.innerHTML += `<td> 0</td>`
+                  }
+                }if (middle == document.getElementById(`middle3`)){
+                  let num = j - 2
+                  if (num >= 0) {
+                    middle.innerHTML += `<td> ${num}</td>`
+                  }else{
+                    middle.innerHTML += `<td> 0</td>`
+                  }
+                }if (middle == document.getElementById(`middle4`)){
+                  let num = j -3
+                  if (num >= 0) {
+                    middle.innerHTML += `<td> ${num}</td>`
+                  }else{
+                    middle.innerHTML += `<td> 0</td>`
+                  }
+                }
+              }
+              
+            }
+            table.innerHTML += "</tbody>"
+            
+          }
+        }
+      }
   body
     h1 Welcome to my Pug Page!
+    div#rowscols
+    div#error
+    table#table
     
       
