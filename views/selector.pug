@@ -4,8 +4,16 @@ block content
   head
     title My Pug Page
     script.
-      
+      window.onload = function() {
+        var image_names = ["Sewers01.png", "Sewers02.jpg", "Sewers03.jpg", "Sewers04.jpg", "Sewers05.jpg"];
+        for(var i = 0; i < 3; i++){
+          var randomNum = Math.floor(Math.random()*5)
+          var image = image_names[randomNum]
+          document.getElementById('images').innerHTML += `<img src="/images/${image}" alt="${image}" width=300 height=300>`
+        }
+      }
   body
-    h1 Welcome to my Pug Page!
+    h1 random selector 
+    div#images
     
       
