@@ -1,0 +1,25 @@
+extends layout.pug
+block content 
+    head
+        title my pug page
+        script.
+            window.onload = function() {
+                console.log(#{toShow})
+
+                document.getElementById("sewerid").innerHTML = #{toShow}._id
+                document.getElementById("sewerLength").innerHTML = #{toShow}.Length
+                document.getElementById("sewerMaterial").innerHTML = #{toShow}.Material
+                document.getElementById("sewerLocation").innerHTML = #{toShow}.Location
+            }
+
+    body
+        div.container-fluid
+            div.row
+                div.sewer.col-sm-2 Sewer Id is:
+                    div#sewerid
+                div.sewer.col-sm-3 Sewer Length is:
+                    div#sewerLength
+                div.sewer.col-sm-3 Sewer Material is:
+                    div#sewerMaterial
+                div.sewer.col-sm-3 Sewer Location is:
+                    div#sewerLocation

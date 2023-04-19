@@ -18,4 +18,6 @@ router.put('/sewer/:id', sewer_controller.Sewer_update_put);
 router.get('/sewer/:id', sewer_controller.Sewer_detail);
 // GET request for list of all Costume items.
 router.get('/sewer', sewer_controller.Sewer_list);
+
+router.get('/detail', sewer_controller.sewer_view_one_Page);
 module.exports = router;

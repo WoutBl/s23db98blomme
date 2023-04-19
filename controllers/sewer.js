@@ -89,4 +89,18 @@ exports.Sewer_view_all_Page = async function(req, res) {
     }
 };
 
+// Handle a show one view with id specified by query
+exports.sewer_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Sewer.findById( req.query.id)
+    res.render('sewerdetail',
+    { title: 'Sewer Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
     
