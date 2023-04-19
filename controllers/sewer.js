@@ -135,8 +135,8 @@ exports.sewer_update_Page = async function(req, res) {
 exports.sewer_delete_Page = async function(req, res) {
     console.log("Delete view for id " + req.query.id)
     try{
-    result = await Costume.findById(req.query.id)
-    res.render('costumedelete', { title: 'Costume Delete', toShow:
+    result = await Sewer.findById(req.query.id)
+    res.render('sewerdelete', { title: 'Sewer Delete', toShow:
     result });
     }
     catch(err){
