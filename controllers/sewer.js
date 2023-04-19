@@ -45,13 +45,37 @@ exports.Sewer_create_post = async function(req, res) {
     }
 };
 // Handle Costume delete form on DELETE.
-exports.Sewer_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Sewer delete DELETE ' + req.params.id);
+exports.Sewer_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await Sewer.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
+    
 };
 // Handle Costume update form on PUT.
-exports.Sewer_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Sewer update PUT' + req.params.id);
+exports.Sewer_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await Sewer.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.Length) toUpdate.Length = req.body.Length;
+    if(req.body.Material) toUpdate.Material = req.body.Material;
+    if(req.body.Location) toUpdate.Location = req.body.Location;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}failed`);
+    }
 };
+
 
 exports.Sewer_view_all_Page = async function(req, res) {
     try{
