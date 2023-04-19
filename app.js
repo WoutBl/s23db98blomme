@@ -20,11 +20,11 @@ db.once("open", function(){console.log("Connection to DB succeeded")});
 async function recreateDB(){
 // Delete everything
 await Sewer.deleteMany();
-let instance1 = new Sewer({Length:10, Material:'Copper', Location:"Kansas City"});
+let instance1 = new Sewer({_id:1, Length:10, Material:'Copper', Location:"Kansas City"});
 instance1.save().then(doc=>{ console.log("First object saved")}).catch(err=>{console.error(err)});
-let instance2 = new Sewer({Length:20, Material:'Copper', Location:"Chicago"});
+let instance2 = new Sewer({_id:2, Length:20, Material:'Copper', Location:"Chicago"});
 instance2.save().then(doc=>{ console.log("Second object saved")}).catch(err=>{console.error(err)});
-let instance3 = new Sewer({Length:50, Material:'Iron', Location:"New York"});
+let instance3 = new Sewer({_id:3,Length:50, Material:'Iron', Location:"New York"});
 instance3.save().then(doc=>{ console.log("Third object saved")}).catch(err=>{console.error(err)});
 }
 
@@ -57,6 +57,8 @@ app.use('/Sewer', SewerRouter);
 app.use('/board', boardRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

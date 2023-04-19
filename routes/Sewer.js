@@ -1,9 +1,6 @@
 var express = require('express');
+const sewer_controlers= require('../controllers/sewer');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Sewer', { title: 'Express' });
-});
-
+/* GET costumes */
+router.get('/', sewer_controlers.Sewer_view_all_Page );
 module.exports = router;

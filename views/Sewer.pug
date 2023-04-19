@@ -2,19 +2,22 @@ extends layout.pug
 
 block content
   head
-    title My Pug Page
+    title
     script.
       window.onload = function() {
-        var results = [10, "Copper", "Kansas City"];
-        results.forEach(myfunction)
+        var result = []
+        result.push(#{results})
+        console.log(result)
+        result.forEach(myfunction)
         function myfunction(x){
           console.log(x);
-          document.getElementById("row").innerHTML += `<div class='col-sm-2'>` + x + `</div>`;
+          document.getElementById("table").innerHTML += `<div class='row'><div class='col-sm-2'>` + x.Length + `</div> <div class='col-sm-2'>` + x.Material + `</div> <div class='col-sm-2'>` + x.Location + `</div></div>`;
         }
       }
   body
-    h1 Sewer
-    div.container-fluid
+    h1= {results}
+    div 
+    div.container-fluid#table
       div#row.row
         
     
