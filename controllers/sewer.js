@@ -119,10 +119,10 @@ exports.sewer_create_Page = function(req, res) {
 
 // Handle building the view for updating a costume.
 // query provides the id
-exports.costume_update_Page = async function(req, res) {
+exports.sewer_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
-        let result = await Costume.findById(req.query.id)
+        let result = await Sewer.findById(req.query.id)
         res.render('sewerupdate', { title: 'Sewer Update', toShow: result });
     }
     catch(err){
@@ -130,6 +130,20 @@ exports.costume_update_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
+// Handle a delete one view with id from query
+exports.sewer_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Costume.findById(req.query.id)
+    res.render('costumedelete', { title: 'Costume Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
     
 
     

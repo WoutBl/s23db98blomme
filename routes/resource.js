@@ -24,5 +24,8 @@ router.get('/detail', sewer_controller.sewer_view_one_Page);
 router.get('/create', sewer_controller.sewer_create_Page);
 /* GET create update page */
 router.get('/update', sewer_controller.sewer_update_Page);
+/* GET delete costume page */
+router.get('/delete', sewer_controller.sewer_delete_Page);
+
 
 module.exports = router;

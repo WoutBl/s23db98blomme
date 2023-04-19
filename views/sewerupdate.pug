@@ -1,0 +1,53 @@
+extends layout.pug
+block content 
+    head
+        title my pug page
+        script.
+            window.onload = function() {
+                console.log(#{toShow})
+
+                document.getElementById("sewerid").innerHTML = #{toShow}._id
+                document.getElementById("_id").value = #{toShow}._id
+                document.getElementById("Length").value = #{toShow}.Length
+                document.getElementById("Material").value = #{toShow}.Material
+                document.getElementById("Location").value = #{toShow}.Location
+                var sewerID = #{toShow}._id
+
+                document.forms['SewerForm'].addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    // TODO do something here to show user that form is being submitted
+                    fetch(event.target.action, {
+                        method: 'PUT',
+                        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+                    }).then((resp) => {
+                        return resp.json(); // or resp.text() or whatever the server sends
+                    }).then((body) => {
+                        alert("Update succeded")
+                    // TODO handle body
+                    }).catch((error) => {
+                    // TODO handle error
+                        alert("Update failed " + error )
+                    });
+                    });
+
+
+            }
+
+    body
+        div.row(class='mb-2', hidden)
+            div.mr-1 ID is
+                div#sewerid
+        form(id='SewerForm', action= "/resource/sewer/2", method="PUT")
+            div.form-group
+                label.sewer(for='_id') Sewer Id
+                input#_id(type='number', name='_id' readonly)
+            div.form-group
+                label.sewer(for='Length') Sewer Length
+                input#Length(type='number', name='Length')
+            div.form-group
+                label.sewer(for='Material') Sewer Material
+                input#Material(type='text', name='Material')
+            div.form-group
+                label.sewer(for='Location') Sewer Location
+                input#Location(type='text', name='Location')
+            input(type="submit")
