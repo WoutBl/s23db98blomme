@@ -20,4 +20,9 @@ router.get('/sewer/:id', sewer_controller.Sewer_detail);
 router.get('/sewer', sewer_controller.Sewer_list);
 
 router.get('/detail', sewer_controller.sewer_view_one_Page);
+/* GET create sewer page */
+router.get('/create', sewer_controller.sewer_create_Page);
+/* GET create update page */
+router.get('/update', sewer_controller.sewer_update_Page);
+
 module.exports = router;

@@ -1,0 +1,39 @@
+extends layout.pug
+block content 
+    head
+        title my pug page
+        script.
+            window.onload = function() {
+                document.forms['SewerForm'].addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    // TODO do something here to show user that form is being submitted
+                    fetch(event.target.action, {
+                        method: 'POST',
+                        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+                    }).then((resp) => {
+                        return resp.json(); // or resp.text() or whatever the server sends
+                    }).then((body) => {
+                        alert("Save succeded")
+                    // TODO handle body
+                    }).catch((error) => {
+                    // TODO handle error
+                        alert("Save failed " + error )
+                    });
+                });
+            }
+
+    body
+        form(id='SewerForm', action="/resource/sewer", method="POST")
+            div.form-group
+                label.sewer(for='_id') Sewer Id
+                input#_id(type='number', name='_id')
+            div.form-group
+                label.sewer(for='Length') Sewer Length
+                input#Length(type='number', name='Length')
+            div.form-group
+                label.sewer(for='Material') Sewer Material
+                input#Material(type='text', name='Material')
+            div.form-group
+                label.sewer(for='Location') Sewer Location
+                input#Location(type='text', name='Location')
+            input(type="submit")
