@@ -4,21 +4,32 @@ block content
   head
     title
     script.
+      
       window.onload = function() {
+        
         var result = []
+        
         result.push(#{results})
-        console.log(result)
+        
         result.forEach(myfunction)
         function myfunction(x){
+          
           console.log(x);
-          document.getElementById("table").innerHTML += `<div class='row'><div class='col-sm-2'>` + x.Length + `</div> <div class='col-sm-2'>` + x.Material + `</div> <div class='col-sm-2'>` + x.Location + `</div></div>`;
+          document.getElementById("table").innerHTML += `<div class='row'><div class='col-sm-2'>` + x.Length + `</div> <div class='col-sm-2'>` + x.Material + `</div> <div class='col-sm-2'>` + x.Location + `</div><button width=100 type='button' class="button", onclick=update(${x._id})> Update </button></div>`;
         }
       }
+      function update(id){
+        window.location.href=`update/?id=${id}`
+      }
+
   body
-    h1= {results}
+    h1 All sewers
     div 
     div.container-fluid#table
       div#row.row
+
+      
+
         
     
       

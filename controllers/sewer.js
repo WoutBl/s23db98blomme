@@ -2,7 +2,9 @@ var Sewer = require('../models/Sewer');
 // List of all Costumes
 exports.Sewer_list = async function(req, res) {
     try{
+        
         theSewers = await Sewer.find();
+        
         res.send(theSewers);
     }
     catch(err){

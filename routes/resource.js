@@ -17,7 +17,7 @@ router.put('/sewer/:id', sewer_controller.Sewer_update_put);
 // GET request for one Costume.
 router.get('/sewer/:id', sewer_controller.Sewer_detail);
 // GET request for list of all Costume items.
-router.get('/sewer', sewer_controller.Sewer_list);
+router.get('/sewer', sewer_controller.Sewer_view_all_Page);
 
 router.get('/detail', sewer_controller.sewer_view_one_Page);
 /* GET create sewer page */
