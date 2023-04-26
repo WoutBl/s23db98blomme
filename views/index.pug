@@ -1,21 +1,14 @@
 extends layout.pug
 
 block content
-  head
-    title My Pug Page
-    script.
-      var count = 20
-      var change = -1
-      function doReduce() {
-        const div = document.getElementById("reduce");
-        count = count + change 
-        change -= 1
-        div.innerHTML = "Count " + count + " change " + change;
-      }
-  body
-    h1 Welcome to my Pug Page!
-    button(onclick="doReduce()") Click me!
-    div#reduce
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/costumes") Take me to costumes
+    br
+    a(href="/logout") Logout
 
-    a(href='//localhost:3000/Sewer') Sewer page
       
