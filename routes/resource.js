@@ -4,6 +4,13 @@ var router = express.Router();
 // Require controller modules.
 var api_controller = require('../controllers/api');
 var sewer_controller = require('../controllers/sewer');
+const secured = (req, res, next) => {
+    if (req.user) {
+        return next();
+    }
+    req.session.returnTo = req.originalUrl;
+    res.redirect("/login");
+}
 /// API ROUTE ///
 // GET resources base.
 router.get('/', api_controller.api);
@@ -23,9 +30,10 @@ router.get('/detail', sewer_controller.sewer_view_one_Page);
 /* GET create sewer page */
 router.get('/create', sewer_controller.sewer_create_Page);
 /* GET create update page */
-router.get('/update', sewer_controller.sewer_update_Page);
+router.get('/update', secured, sewer_controller.sewer_update_Page);
 /* GET delete costume page */
 router.get('/delete', sewer_controller.sewer_delete_Page);
+
 
 
 module.exports = router;

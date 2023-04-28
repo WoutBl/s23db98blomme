@@ -1,18 +1,10 @@
 {
-  "name": "s23wb98blomme",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "^4.3.4",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "http-errors": "^2.0.0",
-    "latest": "^0.2.0",
     "mongodb": "^5.3.0",
     "mongoose": "^7.0.5",
     "morgan": "^1.10.0",
@@ -21,8 +13,13 @@
     "passport-local-mongoose": "^8.0.0",
     "pug": "^3.0.2"
   },
+  "name": "s23db98blomme",
+  "description": "Render server: [https://s23wb98blomme.onrender.com/](https://s23wb98blomme.onrender.com/)",
+  "version": "1.0.0",
   "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
