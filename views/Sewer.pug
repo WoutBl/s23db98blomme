@@ -15,18 +15,29 @@ block content
         function myfunction(x){
           
           console.log(x);
-          document.getElementById("table").innerHTML += `<div class='row'><div class='col-sm-2'>` + x.Length + `</div> <div class='col-sm-2'>` + x.Material + `</div> <div class='col-sm-2'>` + x.Location + `</div><button width=100 type='button' class="button", onclick=update(${x._id})> Update </button></div>`;
+          document.getElementById("table").innerHTML += `<div class='row'><div class='col-sm-2'>` + x.Length + `</div> <div class='col-sm-2'>` + x.Material + `</div> <div class='col-sm-2'>` + x.Location + `</div><button width=100 type='button' class="button", onclick=update(${x._id})> Update </button><button width=100 type='button' class="button", onclick=Detail(${x._id})> Detail </button><button width=100 type='button' class="button", onclick=Delete(${x._id})> Delete </button></div>`;
         }
       }
       function update(id){
         window.location.href=`update/?id=${id}`
       }
+      function Detail(id){
+        window.location.href=`Detail/?id=${id}`
+      }
+      function Delete(id){
+        window.location.href=`delete/?id=${id}`
+      }
+      function Create(){
+        window.location.href=`create`
+      }
 
   body
     h1 All sewers
     div 
-    div.container-fluid#table
-      div#row.row
+      div
+        <button width=100 type='button' class="button", onclick=Create()> Create </button>
+      div.container-fluid#table
+        div#row.row
 
       
 
